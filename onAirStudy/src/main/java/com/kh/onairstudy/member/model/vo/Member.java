@@ -13,7 +13,6 @@ import lombok.ToString;
 @NoArgsConstructor
 @AllArgsConstructor
 @ToString
-
 public class Member implements Serializable{
 	private String memberId;
 	private String memberName;

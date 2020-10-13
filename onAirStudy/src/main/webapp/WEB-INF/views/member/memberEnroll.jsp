@@ -3,9 +3,9 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
-<jsp:include page="/WEB-INF/views/common/header.jsp">
+<%-- <jsp:include page="/WEB-INF/views/common/header.jsp">
 	<jsp:param value="회원등록" name="title"/>
-</jsp:include>
+</jsp:include> --%>
 <link rel="stylesheet" href="${ pageContext.request.contextPath }/resources/css/member.css" />
 <div id="enroll-container" class="mx-auto text-center">
 	<form id="memberEnrollFrm" 
@@ -42,15 +42,15 @@
 				</td>
 			</tr>  
 			<tr>
-				<th>Username</th>
+				<th>name</th>
 				<td>	
-					<input type="text" class="form-control" name="name" id="name" required>
+					<input type="text" class="form-control" name="memberName" id="memberName" required>
 				</td>
 			</tr>
 			<tr>
 				<th>핸드폰 본인인증</th>
 				<td>	
-					<input type="date" class="form-control" name="birthday" id="birthday"/>
+					<input type="date" class="form-control" name="phone" id="phone"/>
 				</td>
 			</tr> 
 			<!-- <tr>
@@ -108,4 +108,4 @@
 
 
 </script>
-<jsp:include page="/WEB-INF/views/common/footer.jsp"></jsp:include>
+<%-- <jsp:include page="/WEB-INF/views/common/footer.jsp"></jsp:include> --%>
