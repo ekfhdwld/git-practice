@@ -26,7 +26,7 @@ public class MemberController {
 	
 	//회원가입 POST
 	@RequestMapping(value = "/memberEnroll.do",
-					method = RequestMethod.GET)
+					method = RequestMethod.POST)
 	public String memberEnroll(RedirectAttributes redirectAttr, Member member) {
 		
 		//사용자 비밀번호 암호화 표시
