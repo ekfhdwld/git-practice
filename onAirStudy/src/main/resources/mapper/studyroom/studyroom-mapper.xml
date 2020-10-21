@@ -10,8 +10,9 @@ select
         F.sr_comment,
         G.member_id,
         G.status_log,
-        G.reader_yn,
-        C.category
+        G.leader_yn,
+        C.category,
+        l.sr_category
 from
     sr_info F left join sr_log G on  F.sr_no = G.sr_no
     left join sr_list L on F.sr_no = l.sr_no
@@ -129,4 +130,32 @@ select
 	where
 		no != 100
 </select>
+
+<insert id="insertStudyRoom">
+
+insert into 
+	sr_list 
+values (
+	seq_sr_list_no.nextval, #{memberId}, default, #{srCategory}, default, default, 'P')
+
+</insert>
+
+<insert id="insertProfileAttachment">
+insert into 
+	profile_attachment 
+values(
+	seq_profile_no.nextval, #{memberId}, #{srNo}, #{originalFilename}, #{renamedFilename}, #{filePath})
+</insert>
+
+<insert id="insertStudyRoomList">
+
+insert into 
+	sr_info 
+values(
+	#{srNo}, 
+	#{srTitle}, 
+	default, 
+	#{srComment}, 0, 0, '-', '-', 0, 'N')
+	
+</insert>
 </mapper>

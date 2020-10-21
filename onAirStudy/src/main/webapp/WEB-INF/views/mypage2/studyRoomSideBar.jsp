@@ -51,8 +51,8 @@
 			<li>
 				<a href="#testDropdown" aria-expanded="false" data-toggle="collapse">시험</a>
 				<ul id="testDropdown" class="collapse list-unstyled ">
-					<li><a href="#">시험문제등록</a></li>
-					<li><a href="#">시험보기</a></li>
+					<li><a href="${ pageContext.request.contextPath}/mypage2/mypage2_question.do">시험문제등록</a></li>
+					<li><a href="${ pageContext.request.contextPath}/mypage2/pretest.do">시험보기</a></li>
 				</ul>
 			</li>
 			<li><a href="#">초대하기</a></li>

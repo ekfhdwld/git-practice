@@ -54,8 +54,8 @@
                 </tr>
               </thead>
               <tbody>
-                 <c:forEach items="${ inList }" var="invitation"> 
-                <c:if test="${invitation.invitedId eq sessionID }">
+                 <c:forEach items="${ inList }"  var="invitation"> 
+                <c:if test="${invitation.invitedId eq loginMember.memberId }">
          	        <tr>
                    	<td>${invitation.no}</td>                    
                     <td>${invitation.sTitle}</td>

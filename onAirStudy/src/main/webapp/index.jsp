@@ -177,7 +177,7 @@
 	style="background-color: rgb(209, 203, 200); height:900px;">
 	<h3 class="text-left">
 		현재 모집중인 스터디
-		<button type="button" class="btn btn-light">더 보기</button>
+		<button type="button" class="btn btn-light" onclick="location.href='${ pageContext.request.contextPath }/studyroom/studyroomlist.do'">더 보기</button>
 		</h2>
 		<br>
 

@@ -1,6 +1,7 @@
 package com.kh.onairstudy.studyroom.model.vo;
 
 import java.io.Serializable;
+import java.util.List;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -25,9 +26,11 @@ public class StudyRoom implements Serializable{
 	private int forcedExitOpt;
 	private char forcedExitYN;
 	
+	private int srCategory;
 	private String sCategory;
 	private String memberId;
 	private String status;
-	private char sReader;
+	private char sLeader;
 
+	private List <ProfileAttachment> proList;
 }

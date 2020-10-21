@@ -2,6 +2,7 @@ package com.kh.onairstudy.studyroom.model.dao;
 
 import java.util.List;
 
+import com.kh.onairstudy.studyroom.model.vo.ProfileAttachment;
 import com.kh.onairstudy.studyroom.model.vo.StudyCategory;
 import com.kh.onairstudy.studyroom.model.vo.StudyRoom;
 import com.kh.onairstudy.studyroom.model.vo.StudyRoomList;
@@ -19,5 +20,11 @@ public interface StudyRoomDAO {
 	List<StudyRoomList> selectStudyRoomList();
 
 	List<StudyCategory> selectCategoryList();
+
+	int insertStudyRoom(StudyRoom studyroom);
+
+	int insertProfileAttachment(ProfileAttachment profile);
+
+	int insertStudyRoomList(StudyRoomList roomlist);
 
 }

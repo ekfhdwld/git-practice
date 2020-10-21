@@ -150,7 +150,7 @@ public class MemberController {
 		Member loginMember = memberService.selectOneMember(memberId); 
 		log.debug("loginMember = " + loginMember);
 		
-		String location = "/";
+		String location = "member/mypage1_index.do";
 		
 		
 		//로그인 성공한 경우

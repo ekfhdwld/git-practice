@@ -56,16 +56,14 @@
                             </thead>
                             <tbody>
                                 <c:forEach items="${ studyList }" var="studyroom">
-                                	<c:if test="${studyroom.memberId eq seesionId }">
+                                	<c:if test="${studyroom.memberId eq loginMember.memberId }">
                                     <tr>
                                         <td>${studyroom.sCategory}</td>
                                         <td>${studyroom.srTitle}</td>
                                         <td>${studyroom.srComment}</td>
 
                                         <td>
-                                            <button type="button" class="btn btn-outline-primary" data-toggle="modal"
-                                                data-target="#myModal_ok">
-                                                입장하기</button>
+                                            <button type="button" class="btn btn-outline-primary" onclick="studyEntry('${studyroom.srNo}')">입장하기</button>
                                         </td>
                                     </tr>
                                     </c:if>
@@ -90,6 +88,7 @@
                             </thead>
                             <tbody>
                                 <c:forEach items="${ waitingList }" var="studyroomwaiting">
+                                <c:if test="${studyroomwaiting.memberId eq loginMember.memberId }">
                                     <tr>
                                         <td>${studyroomwaiting.aCategory}</td>
                                         <td>${studyroomwaiting.aTitle}</td>
@@ -98,6 +97,7 @@
                                                 ${studyroomwaiting.aStatus == 'Y' ? '대기중' : '만료'} </button></td>
                                         
                                     </tr>
+                                    </c:if>
                                 </c:forEach>
                               
                             </tbody>
@@ -119,6 +119,7 @@
                             </thead>
                             <tbody>
                                 <c:forEach items="${ wishList }" var="studyroomwish">
+                                <c:if test="${studyroomwish.memberId eq loginMember.memberId }">
                                     <tr>
                                         <td>${studyroomwish.wCategory}</td>
                                         <td>${studyroomwish.wTitle}</td>
@@ -130,6 +131,7 @@
                                                 ${studyroomwish.wStatus == 'Y' ? '가입가능' : '만료'} </button>
                                         </td>
                                     </tr>
+                                     </c:if>
                                 </c:forEach>
                    
                             </tbody>
@@ -139,6 +141,12 @@
 
         </div>
     </div>
+ 
+ <script>
+function studyEntry(srNo){
+	location.href = "${ pageContext.request.contextPath }/attend//mypage2.do?no=" + srNo;
+}
+</script>
  
 </body>
 

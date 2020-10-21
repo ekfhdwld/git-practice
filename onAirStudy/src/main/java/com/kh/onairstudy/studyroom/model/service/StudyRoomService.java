@@ -20,4 +20,6 @@ public interface StudyRoomService {
 
 	List<StudyCategory> selectCategoryList();
 
+	int insertStudyRoom(StudyRoom studyroom);
+
 }
