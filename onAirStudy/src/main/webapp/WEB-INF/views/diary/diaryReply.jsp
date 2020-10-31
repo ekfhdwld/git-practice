@@ -25,7 +25,7 @@
 		      		type="button" 
 		      		class="btn"
 		      		id="replybtn"
-		      		onclick="btnReplyDel('${ diaryReply.no}')">삭제
+		      		onclick="btnReplyDel('${ diaryReply.no}')">댓글삭제
 		      	</button>
 	     	</c:if>
 	      </td> 
