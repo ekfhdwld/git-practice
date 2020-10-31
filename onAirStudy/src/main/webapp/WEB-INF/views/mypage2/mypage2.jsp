@@ -49,7 +49,7 @@
 							<hr />
 
 							<h5>내용</h5>
-							<textarea id="replyContents" cols="63" rows="5"></textarea>
+							<textarea id="replyContents" style="width : 100%;"  rows="5"></textarea>
 						</div>
 
 					</div>
@@ -69,12 +69,7 @@
 		<!-- Sidebar Header-->
 		<div class="sidebar-header">
 			<div class="avatar">
-				<c:if test="${ not empty sideBarInfo.profile }">
-					<img src="${ pageContext.request.contextPath }/resources/upload/${sideBarInfo.profile}" alt="...">
-				</c:if>
-				<c:if test="${ empty sideBarInfo.profile }">
-					<img src="${ pageContext.request.contextPath }/resources/upload/basicPic.png" alt="...">
-				</c:if>
+				<img src="${ pageContext.request.contextPath }/resources/images/avatar-7.jpg" alt="...">
 				<h3 class="userName">${loginMember.memberId}</h3>
 				<c:if test="${ loginMember.memberRole eq 'P'}">
 					<h5>premium</h5>
@@ -178,36 +173,32 @@ $(function(){
 	<c:if test="${ not empty test}">
 		$(".changeDiv").load("${pageContext.request.contextPath}/mypage2/mypage2_question.do");
 	</c:if>
-
-
-	<c:if test="${ empty attendAlready}">
-		var d = new Date();
-		var week = new Array('일','월','화','수','목','금','토');
-		
-		var day = week[d.getDay()];  //오늘 요일
-		var now = d.getHours() + ":" + d.getMinutes(); //현재시각
-		var attendDay = $("#attendDay").val().split(","); //출석체크 요일
-		var attendTime = $("#attendTime").val().split(/[:,]/); //출석체크 시간
-		var attendCheck = $("#attendCheck").val(); //출석체크 수행 여부
 	
-		console.log(attendCheck);
-		
-		for(var i in attendDay){
-			if(attendDay[i] == day && attendCheck == 0){
-				var startTime = new Date(d.getFullYear(), d.getMonth(), d.getDate(), attendTime[i*2] , attendTime[(i*2)+1] );
-				var endTime = new Date(d.getFullYear(), d.getMonth(), d.getDate(),  startTime.getHours(), startTime.getMinutes()+10 );
-				if(startTime.getTime() <= d.getTime() && d.getTime() <=endTime.getTime() ){
-					 $('#myModal').modal('show'); 
-				}
+	var d = new Date();
+	var week = new Array('일','월','화','수','목','금','토');
+	
+	var day = week[d.getDay()];  //오늘 요일
+	var now = d.getHours() + ":" + d.getMinutes(); //현재시각
+	var attendDay = $("#attendDay").val().split(","); //출석체크 요일
+	var attendTime = $("#attendTime").val().split(/[:,]/); //출석체크 시간
+	var attendCheck = $("#attendCheck").val(); //출석체크 수행 여부
+
+	console.log(attendCheck);
+	
+	for(var i in attendDay){
+		if(attendDay[i] == day && attendCheck == 0){
+			var startTime = new Date(d.getFullYear(), d.getMonth(), d.getDate(), attendTime[i*2] , attendTime[(i*2)+1] );
+			var endTime = new Date(d.getFullYear(), d.getMonth(), d.getDate(),  startTime.getHours(), startTime.getMinutes()+10 );
+			if(startTime.getTime() <= d.getTime() && d.getTime() <=endTime.getTime() ){
+				 $('#myModal').modal('show'); 
 			}
 		}
-
-	</c:if>
+	}
 });
 
 function exitRoom() {
 	if(confirm("방을 나가시겠습니까?") == true){
-		location.href = "${pageContext.request.contextPath}/mypage1_index.do";
+		location.href = "${pageContext.request.contextPath}/mypage1/mypage1_index.do";
 		//이 부분 뒤로가기 막아서,,, 다시 방으로 못들어가게 합시당
 	}
 }
@@ -259,6 +250,9 @@ function post_to_url(path, params, method) {
 
 	function goToAttendCheck(roomNum){
 		var memberId = $(".userName").html();
+
+		//console.log(roomNum);
+		//console.log(memberId);
 		post_to_url("${pageContext.request.contextPath}/attend/check.do", {"id" : memberId, "roomNum" : roomNum});
 	}
 

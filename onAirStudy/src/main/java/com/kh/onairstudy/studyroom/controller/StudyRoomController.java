@@ -444,8 +444,6 @@ public class StudyRoomController {
 		@RequestMapping("/studyroom/updateLeader.do")
 		public String changeLeader(@RequestParam("roomNum") String srNo, RedirectAttributes redirectAttr, HttpSession session) {
 			
-			log.debug("srNo = {}", srNo);
-			
 			Member loginMember = (Member)session.getAttribute("loginMember");
 			log.debug("memberId = {}", loginMember.getMemberId());
 			

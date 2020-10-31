@@ -24,11 +24,6 @@ public class PaymentDAOImpl implements PaymentDAO {
 		return sqlSession.selectList("payment.selectPaymentList");
 	}
 
-	@Override
-	public int insertPaymentLog(String memberId) {
-		return sqlSession.insert("payment.insertPaymentLog", memberId);
-	}
-
 	
 	
 	

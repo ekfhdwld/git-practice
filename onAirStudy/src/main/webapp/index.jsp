@@ -292,6 +292,10 @@
 </div>
 
 
+<<<<<<< HEAD
+
+=======
+>>>>>>> refs/heads/master
 <!-- 둘러보기 -->
 <div class="modal fade" id="previewFrm" role="dialog"
 	aria-labelledby="deleteMemoModalTitle" aria-hidden="true">
@@ -449,8 +453,13 @@
 						});
 			}
 		}
+<<<<<<< HEAD
+
+</script>
+=======
 		</script>
 
+>>>>>>> refs/heads/master
 <div class="col-lg p-0 m-0">
 <jsp:include page="/WEB-INF/views/common/footer.jsp"></jsp:include>
 </div>
