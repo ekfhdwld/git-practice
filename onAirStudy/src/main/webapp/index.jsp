@@ -439,7 +439,17 @@
 						});
 			}
 		}
+<<<<<<< HEAD
 </script>
+=======
+<<<<<<< HEAD
+
+</script>
+=======
+		</script>
+
+>>>>>>> refs/heads/master
+>>>>>>> branch 'master' of https://github.com/ekfhdwld/onAirStudy.git
 <div class="col-lg p-0 m-0">
 <jsp:include page="/WEB-INF/views/common/footer.jsp"/>
 </div>

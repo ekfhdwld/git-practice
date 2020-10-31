@@ -10,7 +10,7 @@
 		values(
 			#{ memberId },
 			#{ memberName },
-			#{ password },n,
+			#{ password },
 			default,
 			#{ phone },
 			default,
@@ -22,7 +22,6 @@
 		
 		)
 	</insert>
-
 	
 	<select id="idChk" resultType="int">
 		select
@@ -42,6 +41,7 @@
   	where 
   		member_id = #{ memberId }
   </select>
+  
   
   <!-- 성실멤버 List -->
   <select id="selectDiligentMember" resultMap="memberMap" >
@@ -152,7 +152,6 @@
   	<result column="start_date" property="startDate"/>
   	<result column="content" property="content"/>
   </resultMap>
-	
 
   
   

@@ -29,6 +29,7 @@ public class PaymentDAOImpl implements PaymentDAO {
 		return sqlSession.insert("payment.insertPaymentLog", memberId);
 	}
 
+
 	
 	
 	

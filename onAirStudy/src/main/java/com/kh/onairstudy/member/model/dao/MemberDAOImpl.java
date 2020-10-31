@@ -1,6 +1,6 @@
 package com.kh.onairstudy.member.model.dao;
 
-import java.util.List; 
+import java.util.List;
 
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -85,7 +85,6 @@ public class MemberDAOImpl implements MemberDAO {
 		return sqlSession.delete("member.deleteMember", memberId);
 	}
 
-	
 
 
 

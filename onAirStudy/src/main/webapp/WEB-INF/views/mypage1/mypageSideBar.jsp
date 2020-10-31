@@ -10,17 +10,11 @@
 
 
 
-	<div class="col-lg" style="padding: 30px 0px 0px 20px; background-color: #d6c8e6;">
-		<nav class="side-navbar mypage-sideBar" style="border: none;padding:5%;">
+	<nav class="side-navbar mypage-sideBar">
 		<!-- Sidebar Header-->
-		<div class="sidebar-header py-5" >
+		<div class="sidebar-header py-5">
 			<div class="avatar">
-				<c:if test="${ not empty sideBarInfo.profile }">
-					<img src="${ pageContext.request.contextPath }/resources/upload/${sideBarInfo.profile}" alt="...">
-				</c:if>
-				<c:if test="${ empty sideBarInfo.profile }">
-					<img src="${ pageContext.request.contextPath }/resources/upload/basicPic.png" alt="...">
-				</c:if>
+				<img src="${ pageContext.request.contextPath }/resources/images/avatar-7.jpg" alt="...">
 				<h3>${loginMember.memberId }</h3>
 				<c:if test="${ loginMember.memberRole eq 'P'}">
 					<h5>premium</h5>
@@ -59,7 +53,6 @@
 			</li> --%>
 		</ul>
 	</nav>
-	</div>
 	
 <script>
 $(".d-day-display").click(function(){

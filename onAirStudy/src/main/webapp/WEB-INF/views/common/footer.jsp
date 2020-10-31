@@ -4,7 +4,7 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <!-- 사용자작성 css -->
-<link rel="stylesheet"href="${pageContext.request.contextPath }/resources/css/footer.css"/>
+<link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/footer.css" />
 </section>
 ​<!-- Site footer -->
     <footer class="site-footer">

@@ -201,11 +201,3 @@ $(document).ready(function(){
 		</div>
 
 
-							
-			
-	
-				
-				
-			
-				
-
