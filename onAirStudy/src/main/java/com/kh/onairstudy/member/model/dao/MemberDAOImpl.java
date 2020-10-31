@@ -8,6 +8,7 @@ import org.springframework.stereotype.Repository;
 
 import com.kh.onairstudy.member.model.vo.Member;
 import com.kh.onairstudy.member.model.vo.MemberInfo;
+import com.kh.onairstudy.payment.model.vo.ProfileAttach;
 
 @Repository
 public class MemberDAOImpl implements MemberDAO {
@@ -73,7 +74,17 @@ public class MemberDAOImpl implements MemberDAO {
 		return sqlSession.selectOne("member.updateSelectOne", memberId);
 	}
 
-	
+
+	@Override
+	public int insertProfilePhoto(ProfileAttach attach) {
+		return sqlSession.insert("member.insertProfilePhoto", attach);
+	}
+	//회원삭제
+	@Override
+	public int deleteMember(String memberId) {
+		return sqlSession.delete("member.deleteMember", memberId);
+	}
+
 
 
 
