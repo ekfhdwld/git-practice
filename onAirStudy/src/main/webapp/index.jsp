@@ -5,14 +5,10 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <fmt:requestEncoding value="utf-8" />
 <%-- 한글 깨짐 방지 --%>
-
-<jsp:include page="/WEB-INF/views/common/header.jsp"></jsp:include>
+<jsp:include page="/WEB-INF/views/common/header.jsp"/>
 <!-- 사용자작성 css -->
-<link rel="stylesheet"
-	href="${pageContext.request.contextPath }/resources/css/style.css" />
-<link rel="stylesheet"
-	href="${pageContext.request.contextPath }/resources/css/studyRoomList.css">
-
+<link rel="stylesheet"href="${pageContext.request.contextPath }/resources/css/style.css" />
+<link rel="stylesheet"href="${pageContext.request.contextPath }/resources/css/studyRoomList.css">
 <div id="carouselExampleCaptions" class="carousel slide"
 	data-ride="carousel">
 	<ol class="carousel-indicators">
@@ -180,7 +176,7 @@
 		<img src="${pageContext.request.contextPath }/resources/images/trophy.png" width=70px;>
 		</h3>
 			
-		<div class="container-sm-5" style="margin-left:4%;">
+		<div class="container-sm-5" style="margin-left:3%;">
 			<div class="row" id="srlistRank">
 				
 				<c:forEach items="${ ds_List }" var="ds" end="4">
@@ -219,9 +215,6 @@
 			</div>
 		</div>
 	</div>
-
-
-
 <!-- 스터디방 리스트 -->
 	<div class="container-fluid"
 		style="background-color: rgb(209, 203, 200); height:1150px;">
@@ -361,13 +354,10 @@
 					<button type="submit" class="btn btn-outline">확인</button>
 					<button type="button" class="btn btn-danger" data-dismiss="modal">취소</button>
 				</div>
-			</form>
-
-
+			</form>​
 		</div>
 	</div>
 </div>
-
 <script>
 	function applyR(srNo) {
 		$("#applyRFrm").modal().find("[name=srNo]").val(srNo);
@@ -413,7 +403,7 @@
 				</div>
 			</div>
 		</div>
-		<script>
+<script>
 		//신고 클릭시 모달창 열기
 		 function reportR(no,leader,title) {
 			$("#reportMyModal").modal('show');
@@ -449,10 +439,7 @@
 						});
 			}
 		}
-		</script>
-
+</script>
 <div class="col-lg p-0 m-0">
-<jsp:include page="/WEB-INF/views/common/footer.jsp"></jsp:include>
+<jsp:include page="/WEB-INF/views/common/footer.jsp"/>
 </div>
-
-

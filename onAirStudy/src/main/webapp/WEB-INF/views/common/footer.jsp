@@ -3,18 +3,10 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-​
 <!-- 사용자작성 css -->
-<link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/footer.css" />
-
-
+<link rel="stylesheet"href="${pageContext.request.contextPath }/resources/css/footer.css"/>
 </section>
-​  <!-- Site footer -->
-​
+​<!-- Site footer -->
     <footer class="site-footer">
       <div class="container">
         <div class="row">
@@ -25,9 +17,6 @@
              your company address<br>
              6, Teheran-ro 14-gil, Gangnam-gu, Seoul, Republic of Korea
               </address>
-              <br>
-              어쩌고 저쩌고 ~~~
-              </p>
           </div>
 ​
           <div class="col-xs-6 col-md-3">

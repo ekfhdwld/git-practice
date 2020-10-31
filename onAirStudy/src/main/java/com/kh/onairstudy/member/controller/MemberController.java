@@ -191,30 +191,29 @@ public class MemberController {
 		
 		Member loginMember = memberService.selectOneMember(memberId); 
 		log.debug("loginMember = " + loginMember);
+		log.debug(bcryptPasswordEncoder.encode(password));
 		
 		String location = "/";
 		
 		
 		//로그인 성공한 경우
-//		if( loginMember != null && 
-//			bcryptPasswordEncoder.matches(password, loginMember.getPassword()) ) {
+		if( loginMember != null && 
+			bcryptPasswordEncoder.matches(password, loginMember.getPassword()) ) {
 		
 		
 			log.debug("loginMember = " + loginMember);
 				//세션에 로그인한 사용자 정보 속성 저장
-				//model은 기본적으로 requestScope에서 작동하므로,
-				//@SessionAttributes를 클래스 레벨에 선언해서 sessionScope에 저장
 				model.addAttribute("loginMember", loginMember);
 				session.setAttribute("loginUser", loginMember);
 				
 				return "redirect:" + location;
 				
 			
-//		} else {
-//			redirectAttr.addFlashAttribute("msg", "아이디 또는 비밀번호가 틀립니다.");
-//			return "redirect:" + location;
-//		
-//		}
+		} else {
+			redirectAttr.addFlashAttribute("msg", "아이디 또는 비밀번호가 틀립니다.");
+			return "redirect:" + location;
+		
+		}
 	}
 		
 		/**
