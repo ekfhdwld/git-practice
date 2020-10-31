@@ -80,6 +80,8 @@ function searchMember(){
 
 function displayTableData(data){
 
+	initTable();
+	
 	var $container = $("#invitationTable");
 
 	var html = "";
@@ -101,15 +103,16 @@ function displayTableData(data){
 	}
 
 	$container.append(html);
+ 
 }
 
 function inviteMember(memberId, id){
 
 	console.log(id);
 
-	initTable();
 	
-	 /* $.ajax({
+	
+	  $.ajax({
 		url : "${pageContext.request.contextPath}/invitation/invite.do",
 		type : "POST",
 		data : {
@@ -134,7 +137,7 @@ function inviteMember(memberId, id){
 			console.log(err);
 		}
 
-	});  */
+	});  
 		
 
 }
@@ -148,11 +151,7 @@ function initTable(){
 			 + "<th>초대</th>"
 			 + "</tr>";
 				
-	console.log(html);		
-				
-				
-	
-	//$("#invitationTable").innerHtml
+	$("#invitationTable").html(html);
 }
 
 </script>
