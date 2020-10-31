@@ -10,8 +10,6 @@ public interface PaymentService {
 
 	List<Payment> selectPaymentList();
 
-	int insertPaymentLog(String memberId);
-
 	
 
 }

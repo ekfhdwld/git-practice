@@ -15,8 +15,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttributes;
-import org.springframework.web.servlet.ModelAndView;
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.kh.onairstudy.attendance.model.service.AttendanceService;
 import com.kh.onairstudy.attendance.model.vo.Attendance;
@@ -25,10 +23,8 @@ import com.kh.onairstudy.member.model.vo.Member;
 import com.kh.onairstudy.member.model.vo.MemberInfo;
 import com.kh.onairstudy.scheduler.model.service.SchedulerService;
 import com.kh.onairstudy.scheduler.model.vo.Scheduler;
-import com.kh.onairstudy.studyroom.model.vo.StudyRoomInfo;
 import com.kh.onairstudy.studytime.model.service.StudytimeService;
 import com.kh.onairstudy.studytime.model.vo.Studytime;
-import com.kh.onairstudy.test.model.vo.Test;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -52,7 +48,7 @@ public class StudytimeController {
 	private MemberService memberService;
 
 	@RequestMapping("/mypage1_index.do")
-	public Object studytimeList( HttpSession session , Member member , ModelAndView mav) {
+	public String studytimeList(Model model, HttpSession session) {
 		
 		Member loginMember = (Member)session.getAttribute("loginUser");
 		
@@ -75,31 +71,17 @@ public class StudytimeController {
 		log.info("sideBarInfo ={}" , sideBarInfo);
 		log.info("memberInfo ={}" , memberInfo);
 		
+		model.addAttribute("studytimeList",studytimeList);
+		model.addAttribute("attendList" , attendList );
+		model.addAttribute("todoList" , scheduleList );
+		model.addAttribute("srList" , srList );
+		model.addAttribute("sideBarInfo" , sideBarInfo );
+		model.addAttribute("memberInfo" , memberInfo );
 		
-		mav.addObject("studytimeList",studytimeList);
-		mav.addObject("attendList" , attendList );
-		mav.addObject("todoList" , scheduleList );
-		mav.addObject("srList" , srList );
-		mav.addObject("sideBarInfo" , sideBarInfo );
-		mav.addObject("memberInfo" , memberInfo );
-		
-		
-// 일반,프리미엄 회원 구분		
-
-		
-		if(loginMember.getMemberRole().equals("P") ) {
-			
-			mav.setViewName("mypage1/mypage1_index");
-			
-		}else {
-			
-			mav.setViewName("mypage1/mypage1_m_index");
-		
-		}
-		return mav;
+		return "mypage1/mypage1_index";
 		
 	}
-
+	
 	
 	
 	@RequestMapping(value = "/mypage1_studyTime.do", method = RequestMethod.POST) 
@@ -125,7 +107,6 @@ public class StudytimeController {
 		return "redirect:/mypage1_index.do";
 	}
 	
-
 	
 	
 }
