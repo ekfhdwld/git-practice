@@ -60,7 +60,6 @@ public class StudytimeController {
 		
 		List<Studytime> studytimeList = studytimeService.selectList(loginMember.getMemberId());
 		List<Attendance> attendList = attendanceService.selectList(loginMember.getMemberId());
-//		List<Scheduler> scheduleList = schedulerService.mainScheduler(map);
 		List<Scheduler> scheduleList = schedulerService.selectToDoList(loginMember.getMemberId());
 		List<String> srList = studytimeService.selectsrList(loginMember.getMemberId());
 		Map<String, Object> sideBarInfo = memberService.selectMemberInfo(loginMember.getMemberId());
@@ -84,20 +83,14 @@ public class StudytimeController {
 		
 		session.setAttribute("sideBarInfo" , sideBarInfo );
 		session.setAttribute("memberInfo" , memberInfo );
-// 일반,프리미엄 회원 구분		
 
-		
+		// 일반,프리미엄 회원 구분		
 		if(loginMember.getMemberRole().equals("P") ) {
-			
 			mav.setViewName("mypage1/mypage1_index");
-			
 		}else {
-			
 			mav.setViewName("mypage1/mypage1_m_index");
-		
 		}
 		return mav;
-		
 	}
 
 	

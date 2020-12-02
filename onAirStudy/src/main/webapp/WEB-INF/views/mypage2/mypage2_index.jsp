@@ -58,6 +58,9 @@
 							<label class="col-sm-4 form-control-label">우리방 규칙</label>
 							<div class="col-sm-8">
 								<p>팀장 경고 누적 ${ roomInfo.forceExitOpt }회시 자동 탈퇴 처리</p>
+								<c:forEach var="warning" items="${warningList }">
+									<p>${warning.memberId } : ${warning.warningCnt }번</p>
+								</c:forEach>
 							</div>
 						</div>
 						<hr />

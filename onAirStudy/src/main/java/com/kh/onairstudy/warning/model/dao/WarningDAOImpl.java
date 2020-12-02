@@ -1,6 +1,7 @@
 package com.kh.onairstudy.warning.model.dao;
 
 import java.util.HashMap;
+import java.util.List;
 
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,6 +33,11 @@ public class WarningDAOImpl implements WarningDAO {
 	@Override
 	public int forceWithDraw(HashMap<String, Object> param) {
 		return sqlSession.update("warning.forceWithDraw", param);
+	}
+
+	@Override
+	public List<Warning> selectWarningCnt(int roomNum) {
+		return sqlSession.selectList("warning.selectWarningCnt", roomNum);
 	}
 
 	
