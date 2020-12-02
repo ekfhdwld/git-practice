@@ -51,5 +51,22 @@
 	
 	</update>
 	
+	<select id="selectWarningCnt" resultType="warning">
+		select 
+			* 
+		from 
+			sr_warning 
+		where 
+			sr_no = #{ roomNum} 
+		and 
+			member_id in (select 
+							member_id 
+						  from 
+						  	sr_log 
+						  where 
+						  	sr_no = #{roomNum} 
+						  and 
+						  	status_log = '참여')
+	</select>
 	
 </mapper>

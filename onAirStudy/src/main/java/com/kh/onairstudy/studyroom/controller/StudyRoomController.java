@@ -16,7 +16,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
@@ -28,7 +27,6 @@ import com.kh.onairstudy.chat.model.service.ChatService;
 import com.kh.onairstudy.chat.model.vo.Chat;
 import com.kh.onairstudy.common.Utils;
 import com.kh.onairstudy.member.model.vo.Member;
-import com.kh.onairstudy.message.model.vo.Message;
 import com.kh.onairstudy.studyroom.model.service.StudyRoomService;
 import com.kh.onairstudy.studyroom.model.vo.ProfileAttachment;
 import com.kh.onairstudy.studyroom.model.vo.StudyCategory;
@@ -38,6 +36,8 @@ import com.kh.onairstudy.studyroom.model.vo.StudyRoomList;
 import com.kh.onairstudy.studyroom.model.vo.StudyRoomLog;
 import com.kh.onairstudy.studyroom.model.vo.StudyRoomWaiting;
 import com.kh.onairstudy.studyroom.model.vo.StudyRoomWish;
+import com.kh.onairstudy.warning.model.service.WarningService;
+import com.kh.onairstudy.warning.model.vo.Warning;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -55,6 +55,9 @@ public class StudyRoomController {
 
 	@Autowired
 	private AttendanceService attendanceService;
+	
+	@Autowired
+	private WarningService warningService;
 
 
 	//메인 페이지 스터디룸 리스트
@@ -78,7 +81,7 @@ public class StudyRoomController {
 			
 			Member loginMember = (Member)session.getAttribute("loginMember");
 	
-			System.out.println("loginMember.getMemberRole()="+loginMember.getMemberRole() );
+			log.debug("member role = " + loginMember.getMemberRole());
 
 			String msg = "";
 			
@@ -89,31 +92,19 @@ public class StudyRoomController {
 			int applyR = studyRoomService.selectApplyRoom(srWating);
 			int myStudy = studyRoomService.selectMyStudy(srNo, memberId);
 			
-			if(loginMember.getMemberRole() != "p"){
-				
-				msg= "프리미엄 회원이 아닙니다. 프리미엄 결제를 해주세요";					
-				
-			}else if(myStudy>0) {
-					
-				msg= "이미 가입되어진 방입니다.";				
-
+			if(!loginMember.getMemberRole().equals("P")){
+				msg = "프리미엄 회원이 아닙니다. 프리미엄 결제를 해주세요";					
+			}else if( myStudy > 0) {
+				msg = "이미 가입되어진 방입니다.";				
 			}
-			else if(applyR>0) {
-				
-				msg= "이미 신청 하신 방입니다.";
-					
+			else if( applyR > 0) {
+				msg = "이미 신청 하신 방입니다.";
 			}else if(loginMember.getMemberRole().equals("M") ){
-				msg= "프리미엄 회원이 아닙니다. 프리미엄 결제를 해주세요";	
-
-				
-			}
-			else{
-
+				msg = "프리미엄 회원이 아닙니다. 프리미엄 결제를 해주세요";	
+			}else{
 				//방 신청 제한
 				if(countR >= 4) {
-					
 					msg= "스터디방의 갯수가 4개를 초과하여  신청 할 수 없습니다.";
-				
 				}else {					 
 					 int result = studyRoomService.insertWating(srWating);
 					 msg= "신청을 완료 하였습니다.";
@@ -123,7 +114,7 @@ public class StudyRoomController {
 			redirectAttr.addFlashAttribute("msg", msg);			
 			return "redirect:/studyroom/studyroomlist.do";
 			
-			}
+		}
 				
 		//찜
 		@RequestMapping("/studyroom/favStudyroom.do")
@@ -136,32 +127,23 @@ public class StudyRoomController {
 			int result = 0;	
 						
 			// 찜 등록
-															
 			int wishR = studyRoomService.selectCheckWish(srWish);
 			int myStudy = studyRoomService.selectMyStudy(srNo, memberId);
 			
-			if( myStudy> 0) {
-				
+			if( myStudy > 0) {
 					msg= "이미 가입되어진 방입니다.";
-				
 			}else {
-				
 				if( wishR > 0 ) {			
 					result = studyRoomService.deleteWish(srWish);
 					msg = "관심 목록에서 해제 되었습니다.";
-
 				}else {
- 
 					result = studyRoomService.insertWish(srWish);
 					msg =  "관심 목록에 추가 하였습니다.";
 				}
-				
 			}
 
 			redirectAttr.addFlashAttribute("msg", msg);
-			
 			return "redirect:/studyroom/studyroomlist.do";
-			
 		}
 		
 		//찾기
@@ -362,11 +344,13 @@ public class StudyRoomController {
 			List<String> applicants = studyRoomService.selectApplicantList(roomNum);
 			
 			List<Attendance> attendList = attendanceService.selectAttendList(roomNum);
+			List<Warning> warningList = warningService.selectWarningCnt(roomNum);
 			
 			model.addAttribute("roomInfo", roomInfo);
 			model.addAttribute("participants", participants);
 			model.addAttribute("applicants", applicants);
 			model.addAttribute("attendList", attendList);
+			model.addAttribute("warningList", warningList);
 			/*
 			 * 아래부터 채팅 정보 불러올게요
 			 */

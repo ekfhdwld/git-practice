@@ -53,7 +53,17 @@
  	from 
  		attendance 
  	where 
- 		sr_no = #{roomNum}
+ 		member_id in (select 
+ 						member_id 
+ 					 from 
+ 					 	sr_log 
+ 					 where 
+ 					 	sr_no = #{roomNum} 
+ 					 and 
+ 					 	status_log = '참여') 
+ 	and 
+ 		sr_no = #{roomNum}		
+ 			
  </select>
  
 </mapper>

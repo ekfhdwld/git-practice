@@ -13,46 +13,6 @@
 
 <jsp:include page="/WEB-INF/views/common/header.jsp"></jsp:include>
 
-<script>
-/* function selectCategory(category) {
-	console.log(category);
-    location.href="${pageContext.request.contextPath}/list.do?category="+category;
-}
-function searchClick() {
-	var selectOption = $("#searchOption").val();
-	var keyword = $("#keyword").val();
-	location.href="${pageContext.request.contextPath}/list.do?search_option="+selectOption + "&keyword=" + keyword;
-}
-function isLogined() {
-	var memberid = $("#member_id").val();
-	if(memberid != null) {
-		return memberid;
-	} else {
-		alert("로그인을 해주세요!");
-		return false;
-	}
-}
-$(document).ready(function() {
-	$("#chk").change(function() {
-		if(this.checked) {
-			var memberid = isLogined() ? isLogined() : false;
-			if(memberid) {
-				$("#search_option").val('member_id');
-				$("#keyword").val(memberid);
-				searchClick();
-			} else {
-				return false;
-			}
-			
-		} else {
-			location.href = '${pageContext.request.contextPath}/servicecenter.do'
-		}
-	})
-}); */
-</script>
-    
-
-    
     <!-- 맨위 배너 -->
 	<div class="container-fluid" style="height: 20vh; background-color: rgb(247, 235, 229);">
 	    <div class="col-md-15">
@@ -178,13 +138,7 @@ $(document).ready(function() {
   
     
      <div class="container1" style="padding-left:5%;padding-right:5%;">
-       <%--  <div class="float-right" >
-			<input type="checkbox" id="chk" name="chk">내가 작성한글 보기</input>
-			<input type="hidden" id="member_id" name="member_id" value="${memberId}" />
-		</div> --%>
-		
-		
-					  
+
 					<table class="table table-hover" id="board">
 					    <tr>
 					      <th>번호</th>
@@ -280,12 +234,6 @@ $(document).ready(function() {
 
 </div> 
 </c:if>
-
-
-
-
-
-
 
 
 <jsp:include page="/WEB-INF/views/common/footer.jsp"></jsp:include>

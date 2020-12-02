@@ -1,14 +1,19 @@
 package com.kh.onairstudy.invitation.model.service;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Isolation;
+import org.springframework.transaction.annotation.Propagation;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.kh.onairstudy.invitation.model.dao.InvitationDAO;
 import com.kh.onairstudy.invitation.model.vo.Invitation;
 import com.kh.onairstudy.member.model.vo.Member;
+import com.kh.onairstudy.studyroom.model.dao.StudyRoomDAO;
 import com.kh.onairstudy.studyroom.model.vo.StudyRoomLog;
 
 /*@Transactional(propagation = Propagation.REQUIRED,
@@ -19,15 +24,19 @@ public class InvitationServiceImpl implements InvitationService {
 
 	@Autowired
 	private InvitationDAO invitationDAO;
+	
+	@Autowired
+	private StudyRoomDAO studyRoomDAO;
 
 	@Override
 	public List<Invitation> selectInvitationList() {
-		
 		return invitationDAO.selectInvitationList();
 	}
 	
 
-
+	@Transactional(propagation = Propagation.REQUIRED,
+			isolation = Isolation.READ_COMMITTED,
+			rollbackFor = Exception.class)
 	@Override
 	public int updateInvitation(Invitation invi) {
 		
@@ -35,17 +44,16 @@ public class InvitationServiceImpl implements InvitationService {
 		
 		result = invitationDAO.updateInvitation(invi);
 		
+		Map<String, Object> param = new HashMap<>();
 		StudyRoomLog sLog = new StudyRoomLog();
 		if(invi.getSLog() != null) {			
-//			for(StudyRoomLog sLog : invi.getSLog()) {
-//				
-//				sLog.setSrNo(invi.getSrNo());				
-//				result = invitationDAO.insertStudyRoomLog(sLog);
-//			}
 			sLog.setMemberId(invi.getInvitedId());
 			sLog.setSrNo(invi.getSrNo());	
+			param.put("memberId", invi.getInvitedId());
+			param.put("roomNum", invi.getSrNo());
 			result = invitationDAO.insertStudyRoomLog(sLog);
-			}
+			result = studyRoomDAO.insertAttendance(param);
+		}
 							
 		return result;
 	}

@@ -243,7 +243,7 @@ select
 from 
 	sr_log
 where
-	member_id = #{memberId} and sr_no = #{srNo}
+	member_id = #{memberId} and sr_no = #{srNo} and status_log = '참여'
 
 </select>
 

@@ -1,6 +1,7 @@
 package com.kh.onairstudy.warning.model.dao;
 
 import java.util.HashMap;
+import java.util.List;
 
 import com.kh.onairstudy.warning.model.vo.Warning;
 
@@ -13,5 +14,7 @@ public interface WarningDAO {
 	int updateWarning(HashMap<String, Object> param);
 
 	int forceWithDraw(HashMap<String, Object> param);
+
+	List<Warning> selectWarningCnt(int roomNum);
 
 }

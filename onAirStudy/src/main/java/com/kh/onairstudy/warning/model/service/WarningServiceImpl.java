@@ -1,6 +1,7 @@
 package com.kh.onairstudy.warning.model.service;
 
 import java.util.HashMap;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -43,6 +44,12 @@ public class WarningServiceImpl implements WarningService{
 			result = warningDAO.forceWithDraw(param);
 		
 		return result;
+	}
+
+
+	@Override
+	public List<Warning> selectWarningCnt(int roomNum) {
+		return warningDAO.selectWarningCnt(roomNum);
 	}
 
 	
