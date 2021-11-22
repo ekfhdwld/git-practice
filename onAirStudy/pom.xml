@@ -206,19 +206,14 @@
 			<version>1.4</version>
 		</dependency>
 	<!--  https://mvnrepository.com/artifact/oracle/ojdbc6  -->
-	<!--<dependency>
-			    <groupId>oracle</groupId>
-			    <artifactId>ojdbc6</artifactId>
-			    <version>11.2.0.3</version>
-		</dependency>  -->
-		<!-- #7. java코드 수정시 톰캣 재기동없이 반영하기 -->
+	<!-- #7. java코드 수정시 톰캣 재기동없이 반영하기 -->
 		<!-- https://mvnrepository.com/artifact/org.springframework/springloaded -->
-		<dependency>
+		<!--  <dependency>
 		    <groupId>org.springframework</groupId>
 		    <artifactId>springloaded</artifactId>
 		    <version>1.2.8.RELEASE</version>
 		    <scope>provided</scope>
-		</dependency>
+		</dependency>-->
 		
 		<!-- #8. spring-security관련 의존 -->
 		<dependency>
