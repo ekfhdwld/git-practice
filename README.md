@@ -16,10 +16,10 @@ kh정보교육원 - <b> 온라인 스터디 사이트</b>
 
 ## 📃 프로젝트 산출물
 ### [ Usecase Diagram ]
-  <img src="https://user-images.githubusercontent.com/47026817/156580708-e357290e-4b94-4e73-b575-7c0bbcd40b2f.png"/>
+  <img src="https://user-images.githubusercontent.com/47026817/156580708-e357290e-4b94-4e73-b575-7c0bbcd40b2f.png" width="500p"/>
 
 ### [ ER Diagram ]
-  <img src="https://user-images.githubusercontent.com/47026817/156581156-15d3d42c-63d7-4188-a308-bcdc92a4cd1c.png"/>
+  <img src="https://user-images.githubusercontent.com/47026817/156581156-15d3d42c-63d7-4188-a308-bcdc92a4cd1c.png" width="500p"/>
 </br>
 </br>
 
